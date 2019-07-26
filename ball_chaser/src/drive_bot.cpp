@@ -27,8 +27,8 @@ bool handle_drive_request(ball_chaser::DriveToTarget::Request& req,
     // Publish angles to drive the robot
     motor_command_publisher.publish(motor_command);
 
-    // Wait 3 seconds for motor to move
-    ros::Duration(1).sleep();
+    // Wait 3 seconds for motor to move -- this sleep might be too long and its causing slower response time
+    //ros::Duration(1).sleep();
 
     // Return a response message
     res.msg_feedback = "Wheel velocilies x set: " + std::to_string(req.linear_x) + " , angular z: " + std::to_string(req.angular_z);
